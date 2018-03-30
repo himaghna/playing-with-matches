@@ -23,7 +23,6 @@ class Tennis:
             elif os.path.isdir(path):
                 temporary_variable = Tennis()
                 for filename in glob.glob(os.path.join(path, '*.csv')):
-                    print(filename)
                     temporary_variable = temporary_variable + Tennis(path = filename)
                 self.data = temporary_variable.data
                 self.path = path
