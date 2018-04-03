@@ -54,6 +54,40 @@ class Tennis:
             print('\nError in opening output file. Exiting')
             exit()
 
+    #set the data attribute
+    def set_data(self, data_frame):
+        self.data = data_frame
+
+    #filter the self object to return a df containing just the rows which have column_name == [value1, value2..]. column_name, [list_of_values].
+    def select_rows(self, column_name, list_of_values):
+        dummy_df = pd.DataFrame()
+        if column_name not in self.data.columns:
+            print('No such columns. Exiting')
+            exit(-1)
+        else:
+            for i in range (len(list_of_values)):
+                dummy_df = dummy_df.append(self.data[self.data.eval(column_name) == list_of_values[i]])
+        return dummy_df
+
+        # filter the self object to return a df containing just the rows which have column_name != [value1, value2..]. column_name, [list_of_values].
+    def disselect_rows(self, column_name, list_of_values):
+        dummy_df = pd.DataFrame()
+        if column_name not in self.data.columns:
+            print('No such columns. Exiting')
+            exit(-1)
+        else:
+            for i in range(len(list_of_values)):
+                dummy_df = dummy_df.append(self.data[self.data.eval(column_name) != list_of_values[i]])
+        return dummy_df
+
+
+
+
+
+
+
+
+
     #plots a scatter plot between factor_y (y -axis) and factor_x (x-axis)
     #def two_factor_plots(self, factor_y, factor_x):
      #   plotter.scatter()
